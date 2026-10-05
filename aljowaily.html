@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الجويلي للدعاية والإعلان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#332863;        /* بنفسجي اللوجو */
+  --ink-deep:#271e50;
+  --ink-soft:#463a7d;
+  --green:#34b28a;      /* أخضر اللوجو */
+  --green-deep:#278a6a;
+  --mint:#e7f6f0;
+  --paper:#f6fbf9;
+  --text:#241d49;
+  --muted:#5d5782;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--text);line-height:1.8;font-size:17px}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:'Reem Kufi','Cairo',sans-serif;line-height:1.3}
+
+/* الإطار المزخرف المأخوذ من شكل اللوجو */
+.frame{
+  --n:22px;
+  clip-path:polygon(var(--n) 0,calc(100% - var(--n)) 0,100% var(--n),100% calc(100% - var(--n)),calc(100% - var(--n)) 100%,var(--n) 100%,0 calc(100% - var(--n)),0 var(--n));
+}
+
+/* الهيدر */
+header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff;border-bottom:3px solid var(--green)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:94px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mark{width:68px;height:62px;background:var(--green);display:grid;place-items:center;color:var(--ink);font-family:'Aref Ruqaa',serif;font-size:22px;font-weight:700}
+.image-slot{position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;background:rgba(52,178,138,.12);color:var(--green);font-size:14px;font-weight:700}
+.image-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}
+.image-slot.has-image img{opacity:1}
+.image-slot.has-image .image-placeholder{display:none}
+.image-placeholder{padding:8px}
+.image-placeholder small{font-size:11px;font-weight:600;overflow-wrap:anywhere}
+.brand .mark.image-slot{background:var(--green);color:var(--ink);font-size:12px}
+.brand .mark.image-slot img,.pcard .ico.image-slot img,.why .d.image-slot img,.info .row .image-slot img{object-fit:contain;padding:6px;background:#fff}
+.pcard .ico.image-slot{color:var(--ink)}
+.brand b{font-family:'Aref Ruqaa',serif;font-size:26px;display:block;line-height:1.1}
+.brand small{color:var(--green);font-size:12.5px;font-weight:600}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{padding:8px 16px;border-radius:999px;font-weight:600;font-size:15.5px;transition:.2s}
+nav a:hover{background:var(--ink-soft);color:var(--green)}
+.cta{background:var(--green);color:var(--ink)!important;font-weight:800}
+.cta:hover{background:#fff!important;color:var(--ink)!important}
+.burger{display:none;background:none;border:2px solid var(--green);color:var(--green);border-radius:10px;padding:6px 12px;font-size:20px;cursor:pointer}
+
+/* الهيرو */
+.hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:84px 0 110px}
+.hero::before{content:"";position:absolute;inset:0;opacity:.07;
+  background-image:radial-gradient(var(--green) 1.5px,transparent 1.5px);background-size:26px 26px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;color:var(--green);font-weight:700;letter-spacing:.5px;margin-bottom:10px}
+.hero h1{font-size:clamp(34px,5vw,58px);margin-bottom:18px}
+.hero h1 span{color:var(--green)}
+.hero p{color:#d6d1f0;max-width:520px;margin-bottom:30px;font-size:18px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 30px;border-radius:999px;font-weight:800;border:2px solid var(--green);transition:.2s;cursor:pointer;font-family:inherit;font-size:16px}
+.btn.fill{background:var(--green);color:var(--ink)}
+.btn.fill:hover{background:#fff;border-color:#fff}
+.btn.line{color:var(--green);background:transparent}
+.btn.line:hover{background:var(--green);color:var(--ink)}
+.hero-card{background:var(--green);padding:14px;aspect-ratio:1/0.92}
+.hero-card .in{height:100%;background:var(--ink);display:grid;place-items:center;text-align:center;padding:24px;
+  clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px)}
+.hero-card .in b{font-family:'Aref Ruqaa',serif;font-size:clamp(54px,8vw,92px);color:var(--green);line-height:1.1;display:block}
+.hero-card .in span{color:#fff;font-weight:700;letter-spacing:.5px}
+
+/* شريط الأرقام */
+.stats{margin-top:-52px;position:relative;z-index:5}
+.stats .box{background:#fff;border-radius:var(--radius);box-shadow:0 14px 40px rgba(51,40,99,.16);display:grid;grid-template-columns:repeat(4,1fr);padding:26px 10px;border-bottom:5px solid var(--green)}
+.stat{text-align:center;padding:4px 10px}
+.stat b{font-family:'Reem Kufi';font-size:34px;color:var(--ink);display:block}
+.stat span{color:var(--muted);font-weight:600;font-size:15px}
+
+/* الأقسام */
+section{padding:92px 0}
+.head{text-align:center;margin-bottom:50px}
+.head .tag{color:var(--green-deep);font-weight:800;font-size:15px}
+.head h2{font-size:clamp(28px,4vw,42px);color:var(--ink);margin:4px 0 10px}
+.head h2::after{content:"";display:block;width:84px;height:5px;background:var(--green);margin:12px auto 0;border-radius:4px}
+.head p{color:var(--muted);max-width:620px;margin:10px auto 0}
+
+/* قسم الدروع */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 26px rgba(51,40,99,.09);transition:.25s;display:flex;flex-direction:column;border:1px solid #e3ebe8}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(51,40,99,.18)}
+.card .art{height:230px;background:var(--ink);display:grid;place-items:center;position:relative}
+.card .art::after{content:"";position:absolute;inset:12px;border:2px solid var(--green);border-radius:10px;opacity:.55;pointer-events:none}
+.card .body{padding:24px;flex:1;display:flex;flex-direction:column}
+.card h3{color:var(--ink);font-size:24px;margin-bottom:6px}
+.card p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+.card ul{list-style:none;margin-bottom:18px}
+.card li{padding:3px 0;font-size:15px;font-weight:600;color:var(--text)}
+.card li::before{content:"◆";color:var(--green);margin-inline-end:10px;font-size:11px}
+.card .link{margin-top:auto;color:var(--green-deep);font-weight:800}
+.card .link:hover{color:var(--ink)}
+
+/* قسم الطباعة */
+.print{background:var(--ink);color:#fff;position:relative}
+.print .head h2{color:#fff}
+.print .head p{color:#cfc9ec}
+.print .head .tag{color:var(--green)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.pcard{background:var(--ink-soft);border:2px solid rgba(52,178,138,.35);border-radius:var(--radius);padding:34px 28px;transition:.25s;position:relative;overflow:hidden}
+.pcard:hover{border-color:var(--green);transform:translateY(-6px)}
+.pcard .ico{width:72px;height:72px;background:var(--green);color:var(--ink);border-radius:16px;display:grid;place-items:center;margin-bottom:20px}
+.pcard h3{font-size:25px;margin-bottom:6px}
+.pcard p{color:#d6d1f0;font-size:15.5px;margin-bottom:16px}
+.pcard li{list-style:none;padding:3px 0;font-weight:600;font-size:15px}
+.pcard li::before{content:"✓";color:var(--green);margin-inline-end:10px;font-weight:800}
+.pcard .num{position:absolute;left:18px;top:6px;font-family:'Reem Kufi';font-size:70px;color:rgba(255,255,255,.06);font-weight:700}
+
+/* لماذا نحن */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.why div{background:#fff;border-radius:var(--radius);padding:28px 22px;text-align:center;border:1px solid #e3ebe8}
+.why .d{width:54px;height:54px;margin:0 auto 14px;background:var(--mint);color:var(--green-deep);display:grid;place-items:center;border-radius:50%;font-size:24px;font-weight:800}
+.why h3{color:var(--ink);font-size:20px;margin-bottom:4px}
+.why p{color:var(--muted);font-size:14.5px}
+
+/* التواصل */
+.contact{background:var(--mint)}
+.cgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+.info h2{font-size:clamp(28px,4vw,40px);color:var(--ink);margin-bottom:12px}
+.info p{color:var(--muted);margin-bottom:22px}
+.info .row{display:flex;gap:14px;align-items:center;margin-bottom:14px;font-weight:700;color:var(--ink)}
+.info .row .image-slot{font-style:normal;flex:0 0 44px;width:44px;height:44px;border-radius:12px;background:var(--ink);color:var(--green)}
+form{background:#fff;padding:32px;border-radius:var(--radius);box-shadow:0 12px 34px rgba(51,40,99,.12);border-top:6px solid var(--green)}
+form label{display:block;font-weight:700;color:var(--ink);margin-bottom:5px;font-size:15px}
+form input,form select,form textarea{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:2px solid #dbe6e2;border-radius:12px;margin-bottom:16px;background:var(--paper);color:var(--text);transition:.2s}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--green);background:#fff}
+form textarea{min-height:100px;resize:vertical}
+form .btn{width:100%;text-align:center}
+
+footer{background:var(--ink-deep);color:#cfc9ec;padding:34px 0;text-align:center;border-top:4px solid var(--green);font-size:15px}
+footer b{font-family:'Aref Ruqaa',serif;color:var(--green);font-size:24px;display:block}
+
+/* موبايل */
+@media(max-width:900px){
+  .hero-grid,.cgrid{grid-template-columns:1fr}
+  .cards,.pgrid{grid-template-columns:1fr}
+  .why{grid-template-columns:1fr 1fr}
+  .stats .box{grid-template-columns:1fr 1fr;gap:12px}
+  .burger{display:block}
+  nav{position:absolute;top:94px;inset-inline:0;background:var(--ink);display:none;padding:14px 16px 20px;border-bottom:3px solid var(--green)}
+  nav.open{display:block}
+  nav ul{flex-direction:column}
+  .hero{padding:56px 0 90px}
+  .hero-card{max-width:380px;margin-inline:auto;width:100%}
+  section{padding:68px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="mark frame image-slot" style="--n:8px">
+        <img src="الجويلى .png" alt="شعار الجويلي">
+        <span class="image-placeholder">الشعار<br><small>images/logo.png</small></span>
+      </span>
+      <span><b>الجويلي</b><small>للدعاية والإعلان</small></span>
+    </a>
+    <button class="burger" onclick="document.getElementById('menu').classList.toggle('open')" aria-label="القائمة">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="#top">الرئيسية</a></li>
+        <li><a href="#awards">الدروع</a></li>
+        <li><a href="#printing">الطباعة</a></li>
+        <li><a href="#why">لماذا الجويلي</a></li>
+        <li><a href="#contact" class="cta">اطلب عرض سعر</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">◆ دعاية • إعلان • تكريم</span>
+      <h1>نصنع <span>الدروع</span> والمطبوعات التي تليق باسمك</h1>
+      <p>الجويلي للدعاية والإعلان: دروع تكريم بالنحاس والكريستال والخشب، وطباعة بانرات وUV وDTF بجودة عالية وتسليم في الموعد.</p>
+      <div class="btns">
+        <a href="#awards" class="btn fill">شاهد الدروع</a>
+        <a href="#printing" class="btn line">خدمات الطباعة</a>
+      </div>
+    </div>
+    <div class="hero-card frame">
+      <div class="in">
+        <div>
+          <b>الجويلي</b>
+          <span>للدعاية والإعلان</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap stats">
+  <div class="box">
+    <div class="stat"><b>3</b><span>خامات للدروع</span></div>
+    <div class="stat"><b>3</b><span>تقنيات طباعة</span></div>
+    <div class="stat"><b>+1000</b><span>عميل راضي</span></div>
+    <div class="stat"><b>24 ساعة</b><span>تنفيذ سريع للطلبات العاجلة</span></div>
+  </div>
+</div>
+
+<!-- الدروع -->
+<section id="awards">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">◆ قسم الدروع</span>
+      <h2>دروع التكريم بكل أنواعها</h2>
+      <p>اختر الخامة اللي تناسب مناسبتك، وإحنا نتولى التصميم والتنفيذ بالشعار والنص المطلوب.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card">
+        <div class="art">
+          <div class="image-slot" style="width:100%;height:100%">
+            <img src="نحاس 1.jpg" alt="درع نحاس">
+            <span class="image-placeholder">صورة درع النحاس<br><small>images/copper-shield.jpg</small></span>
+          </div>
+        </div>
+        <div class="body">
+          <h3>دروع نحاس</h3>
+          <p>فخامة كلاسيكية تدوم، مناسبة للمؤسسات والجهات الرسمية.</p>
+          <ul><li>طباعه بجوده عاليه</li><li>تشطيب انيق</li><li>علب قطيفه جوده عاليه</li></ul>
+          <a href="#contact" class="link">اطلب الآن ←</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="art">
+          <div class="image-slot" style="width:100%;height:100%">
+            <img src="كرستال 1.jpg" alt="درع كريستال">
+            <span class="image-placeholder">صورة درع الكريستال<br><small>images/crystal-shield.jpg</small></span>
+          </div>
+        </div>
+        <div class="body">
+          <h3>دروع كريستال</h3>
+          <p>شفافية وأناقة تعكس قيمة التكريم، بأشكال وأحجام متنوعة.</p>
+          <ul><li>نقش ليزر داخل الكريستال</li><li>طباعة UV بالألوان</li><li>علبة هدية فاخرة</li></ul>
+          <a href="#contact" class="link">اطلب الآن ←</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="art">
+          <div class="image-slot" style="width:100%;height:100%">
+            <img src="خشب 1.jpg" alt="درع خشب">
+            <span class="image-placeholder">صورة الدرع الخشبي<br><small>images/wood-shield.jpg</small></span>
+          </div>
+        </div>
+        <div class="body">
+          <h3>دروع خشب</h3>
+          <p>دفء الخشب الطبيعي مع لوحات معدنية أو UV لمسة عصرية.</p>
+          <ul><li>خشب MDF وخشب طبيعي</li><li>لوحة نحاس أو أكريليك</li><li>تصميم حسب الطلب</li></ul>
+          <a href="#contact" class="link">اطلب الآن ←</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- الطباعة -->
+<section id="printing" class="print">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">◆ قسم الطباعة</span>
+      <h2>طباعة بأحدث التقنيات</h2>
+      <p>بانرات للحملات، وطباعة UV على الخامات الصلبة، وDTF للتيشيرتات والملابس بألوان تثبت.</p>
+    </div>
+    <div class="pgrid">
+
+      <article class="pcard">
+        <span class="num">01</span>
+        <div class="ico image-slot"><img src="paner.png" alt="طباعة البانرات"><span class="image-placeholder">صورة<br><small>images/banner-printing.jpg</small></span></div>
+        <h3>طباعة البانرات</h3>
+        <p>للمعارض والحملات والواجهات بمقاسات كبيرة وألوان حيّة.</p>
+        <ul><li>فليكس وفينيل وبانر ستاند</li><li>مقاسات حسب الطلب</li><li>مقاوم للشمس والمطر</li></ul>
+      </article>
+
+      <article class="pcard">
+        <span class="num">02</span>
+        <div class="ico image-slot"><img src="uv.png" alt="طباعة UV"><span class="image-placeholder">صورة<br><small>images/uv-printing.jpg</small></span></div>
+        <h3>طباعة UV</h3>
+        <p>طباعة مباشرة على الخامات بدقة عالية وملمس بارز.</p>
+        <ul><li>خشب • أكريليك • معدن • زجاج</li><li>ورنيش وبروز اختياري</li><li>ثبات ألوان عالي</li></ul>
+      </article>
+
+      <article class="pcard">
+        <span class="num">03</span>
+        <div class="ico image-slot"><img src="dtf.png" alt="طباعة DTF"><span class="image-placeholder">صورة<br><small>images/dtf-printing.jpg</small></span></div>
+        <h3>طباعة DTF</h3>
+        <p>تفاصيل دقيقة وألوان كاملة على أي قماش، حتى بكميات صغيرة.</p>
+        <ul><li>تيشيرتات • هوديز • أطقم رياضية</li><li>تتحمل الغسيل المتكرر</li><li>بدون حد أدنى للكمية</li></ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- لماذا -->
+<section id="why">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">◆ لماذا الجويلي</span>
+      <h2>جودة تتكلم عنّا</h2>
+    </div>
+    <div class="why">
+      <div><span class="d image-slot"><img src="target.png" alt=""><span class="image-placeholder">صورة<br><small>images/precision.jpg</small></span></span><h3>دقة في التنفيذ</h3><p>نقش وطباعة بتفاصيل نظيفة وحواف مظبوطة.</p></div>
+      <div><span class="d image-slot"><img src="quick.png" alt=""><span class="image-placeholder">صورة<br><small>images/on-time.jpg</small></span></span><h3>التزام بالمواعيد</h3><p>نسلّم في الوقت المتفق عليه، وعندنا تنفيذ عاجل.</p></div>
+      <div><span class="d image-slot"><img src="professional-icon.png" alt=""><span class="image-placeholder">صورة<br><small>images/design.jpg</small></span></span><h3> تصميم احترافى </h3><p>فريق تصميم يجهّز لك الشكل قبل التنفيذ.</p></div>
+      <div><span class="d image-slot"><img src="price-tag.png" alt=""><span class="image-placeholder">صورة<br><small>images/prices.jpg</small></span></span><h3>أسعار مناسبة</h3><p>عروض خاصة للمؤسسات والكميات.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- تواصل -->
+<section id="contact" class="contact">
+  <div class="wrap cgrid">
+    <div class="info">
+      <span class="tag" style="color:var(--green-deep);font-weight:800">◆ تواصل معنا</span>
+      <h2>جاهزين نبدأ مشروعك</h2>
+      <p>ابعتلنا تفاصيل طلبك وهنرد عليك بعرض سعر في أسرع وقت.</p>
+      <div class="row"><span class="image-slot"><img src="phone-call (1).png" alt=""><span class="image-placeholder">صورة<br><small>images/phone.png</small></span></span><span>01116263151</span></div>
+      <div class="row"><span class="image-slot"><img src="email.png" alt=""><span class="image-placeholder">صورة<br><small>images/email.png</small></span></span><span>mostafamahmoudshop@gmail.com</span></div>
+      <div class="row"><span class="image-slot"><img src="gps.png" alt=""><span class="image-placeholder">صورة<br><small>images/location.png</small></span></span><span>الموسكى عتبه أول عبد العزيز</span></div>
+    </div>
+    <form id="order-form">
+      <label for="n">الاسم</label>
+      <input id="n" required placeholder="اسمك">
+      <label for="p">رقم الموبايل</label>
+      <input id="p" type="tel" required placeholder="011">
+      <label for="s">الخدمة المطلوبة</label>
+      <select id="s">
+        <option>دروع نحاس</option><option>دروع كريستال</option><option>دروع خشب</option>
+        <option>طباعة بانرات</option><option>طباعة UV</option><option>طباعة DTF</option>
+      </select>
+      <label for="m">تفاصيل الطلب</label>
+      <textarea id="m" placeholder="الكمية، المقاس، النص المطلوب..."></textarea>
+      <button class="btn fill" type="submit">أرسل الطلب</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>الجويلي</b>
+    للدعاية والإعلان — جميع الحقوق محفوظة
+  </div>
+</footer>
+
+<script>
+document.getElementById("order-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById("n").value.trim();
+  const phone = document.getElementById("p").value.trim();
+  const service = document.getElementById("s").value;
+  const details = document.getElementById("m").value.trim();
+  const message = [
+    "طلب جديد من موقع الجويلي",
+    `الاسم: ${name}`,
+    `رقم الموبايل: ${phone}`,
+    `الخدمة المطلوبة: ${service}`,
+    `تفاصيل الطلب: ${details || "لا توجد تفاصيل إضافية"}`
+  ].join("\n");
+
+  window.open(
+    `https://wa.me/201116263151?text=${encodeURIComponent(message)}`,
+    "_blank",
+    "noopener,noreferrer"
+  );
+});
+
+document.querySelectorAll(".image-slot img").forEach((image) => {
+  const slot = image.closest(".image-slot");
+  if (!slot) return;
+
+  image.addEventListener("load", () => slot.classList.add("has-image"));
+  image.addEventListener("error", () => slot.classList.remove("has-image"));
+
+  if (image.complete && image.naturalWidth > 0) {
+    slot.classList.add("has-image");
+  }
+});
+</script>
+</body>
+</html>
